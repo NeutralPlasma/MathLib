@@ -52,7 +52,6 @@ jobs:
         shell: bash
         run: |
           value=`cat file.txt`
-          rm file.txt
           if [ $value=0 ]; then
             exit 1
           fi
