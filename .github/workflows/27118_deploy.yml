@@ -6,3 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+
+
+jobs:
+  temporary:
+    runs-on: self-hosted
+    steps:
+      - name: Just for fun
+        run: |
+          echo "Test files exist"
