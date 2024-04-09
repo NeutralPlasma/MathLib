@@ -20,7 +20,7 @@ jobs:
 
       - name: Check if files exist
         run: |
-          if [ -f test_math.py ]; then
+          if [ -f $GITHUB_WORKSPACE/test_math.py ]; then
             echo "File exists"
             exit 1
           else
