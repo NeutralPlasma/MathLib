@@ -2,9 +2,11 @@ name: Validate python versions
 
 on:
   push:
-    branches: [ main,test ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 
@@ -17,9 +19,13 @@ jobs:
         name: Check out current commit
 
       - name: Check if files exist
-        if: ${{ hashFiles('.tests/') != ''}}
         run: |
-          echo "Test files exist"
+          if [ -f test_math.py ]; then
+            echo "File exists"
+            exit 1
+          else
+              echo "File does not exist"
+          fi
 
   build:
     needs: checkForTests
