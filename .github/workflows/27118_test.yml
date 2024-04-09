@@ -49,6 +49,7 @@ jobs:
           name: file_exists
 
       - name: Preveri ce je bil artifakt vredu
+        shell: bash
         run: |
           value=`cat file.txt`
           rm file.txt
