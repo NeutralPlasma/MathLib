@@ -1,6 +1,3 @@
-import statistics
-
-
 def multiply(a, b):
     return a * b
 
@@ -46,3 +43,10 @@ def get_median(array):
         median = (array[len(array) // 2] + array[len(array) // 2 - 1]) / 2
         return median
 
+
+# string functions
+def text_contains_word(text, word):
+    for letter in word:
+        if letter in text:
+            return True
+    return False
