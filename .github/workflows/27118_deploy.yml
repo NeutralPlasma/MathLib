@@ -1,17 +1,30 @@
 name: Deploys to dockerhub
 
 on:
-  push:
-    branches: [ main,test ]
-  pull_request:
-    branches: [ main ]
+  workflow_run:
+    workflows:
+      - "Validate python versions"
+    types:
+      - completed
+
 
 
 
 jobs:
-  temporary:
+  deploy:
     runs-on: self-hosted
     steps:
-      - name: Just for fun
-        run: |
-          echo "Test files exist"
+      - uses: actions/checkout@v4
+        name: Checkout latest commit
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: user/app:latest
