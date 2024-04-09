@@ -17,17 +17,20 @@ jobs:
         name: Checkout latest commit
 
 
-      - name: Prijava v Docker
-        run: |
-          echo ${{ secrets.DOCKERHUB_TOKEN }} > pass.txt
-          echo ${{ secrets.DOCKERHUB_USERNAME }} > test.txt
-          cat test.txt
-          cat pass.txt | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-          rm pass.txt
+#      - name: Prijava v Docker
+#        run: |
+#          echo ${{ secrets.DOCKERHUB_TOKEN }} > pass.txt
+#          cat pass.txt | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+#          rm pass.txt
 
+      - name: Prijava v Docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Zapakiraj in pushni
         run: |
-            sh $GITHUB_WORKSPACE/zapakiraj_27118.sh
+            sh zapakiraj_27118.sh
 
       
