@@ -50,3 +50,11 @@ def text_contains_word(text, word):
         if letter in text:
             return True
     return False
+
+if __name__ == '__main__':
+    print(text_contains_word("Hello world", "world"))
+    print(subtract(10, 20))
+    print(add(0, 20))
+    print(get_min([10, 11, 13, 15, 0, -20]))
+    print(get_max([10, 11, 13, 15, 0, -20]))
+    print(get_median([10, 11, 13, 15, 0, -20]))
