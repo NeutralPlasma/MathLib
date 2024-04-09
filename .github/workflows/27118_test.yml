@@ -51,6 +51,7 @@ jobs:
       - name: Preveri ce je bil artifakt vredu
         run: |
           value=`cat file.txt`
+          rm file.txt
           if [ $value=0 ]; then
             exit 1
           fi
