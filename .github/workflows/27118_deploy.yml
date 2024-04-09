@@ -20,7 +20,7 @@ jobs:
       - name: Prijava v Docker
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} > pass.txt
-          cat pass.txt | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+          cat pass.txt | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
           rm pass.txt
 
 
